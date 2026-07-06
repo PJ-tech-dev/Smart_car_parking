@@ -1,8 +1,13 @@
 # 🚗 Smart Car Parking System (Verilog HDL)
 
-An FPGA-based **Smart Car Parking System** designed in Verilog HDL. This project implements a fully automated parking lot manager featuring multi-slot occupancy tracking, password-protected entry and exit, VIP bypass lanes, security lockouts for unauthorized access attempts, admin overrides, and automatic slot-release timers.
+The **Smart Car Parking System** is a high-performance, robust hardware controller designed in Verilog HDL and implemented on FPGA architecture to address the challenging demands of modern urban parking resource management. Modern traffic infrastructures require automated, secure, and highly efficient parking systems to optimize space allocation, reduce search times, and improve overall user experiences. This project provides a complete digital design solution, engineered and verified using Xilinx Vivado for synthesis, implementation, and behavioral simulation. The resulting Verilog code is fully optimized for FPGA hardware deployment.
 
-Designed and verified using **Xilinx Vivado Design Suite**.
+At the core of the system is a 6-state Finite State Machine (FSM) that dictates the arrival, entry, parking duration, verification, lockout, and exit cycles of vehicles. The system handles four independent parking slots, each tracked by a dedicated slot management sub-system. Regular users register a slot-specific 4-bit password during arrival. To exit, the driver must input the correct password, preventing vehicle theft and unauthorized departures. To safeguard against brute-force password cracking attempts, the controller incorporates a lockout mechanism. If three consecutive incorrect password entry attempts are detected on a single slot, the system locks the slot and disables standard user exit controls. A locked slot can only be released through a manual administrative override, ensuring high-grade perimeter security.
+
+For premium or emergency parking requirements, the system implements a VIP entry and exit feature. Setting the VIP signal during arrival configures the corresponding slot as VIP, enabling instantaneous gate activation without requiring password entry or validation. Furthermore, to optimize slot turnover and prevent vehicles from hogging parking spaces indefinitely, the design integrates synchronous auto-release timers. Each occupied slot tracks time ticks, and if a vehicle remains parked beyond ten ticks, the system triggers an automatic release, clearing the slot and resetting the gate.
+
+This modular digital system is partitioned into the main FSM controller, a slot manager, and a secure password memory module, all integrated under a unified top-level wrapper. Verification has been thoroughly conducted using a behavioral testbench that simulates real-world parking scenarios, ensuring correct operation across multiple edge cases such as concurrent arrivals, password validation failures, lockouts, administrative overrides, and timer-driven auto-clear events.
+
 
 ---
 
