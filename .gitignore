@@ -1,0 +1,14 @@
+# Vivado files to ignore
+.Xil/
+parking.cache/
+parking.hw/
+parking.ip_user_files/
+parking.runs/
+parking.sim/
+vivado.jou
+vivado.log
+vivado_pid*.str
+*.jou
+*.log
+*.str
+*.debug
